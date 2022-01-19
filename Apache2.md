@@ -42,6 +42,22 @@ export apache_run_group= www-data
 
 ### Ocultar información del servidor en el header
 
-Desde la ruta `/etc/apache2/conf-enabled/security.conf` podemos editar dos líneas de forma que ya no sea visible la versión del servidor web. 
+Debido a que la primera fase de cualquier ataque se basa a grandes rasgos en el reconocimiento. Es necesario hacer lo más díficil posible que el atacante sea capaz de sacar información sobre la que pueda basar su ataque, como pueden ser la versiones del software.
+
+Desde la ruta `/etc/apache2/conf-enabled/security.conf` podemos editar dos líneas de forma que ya no sea visible la versión del servidor web. Al menos no de forma directa desde un navegador convencional.
+
+```
+ServerTokens Prod
+ServerSignature Off
+```
 
 ![imagen2](/img/header-update.png)
+
+### Desactivar módulos no usados
+
+Como el principio de seguridad se basa en gran parte en reducir la superficie de ataque, deberíamos desactivar los módulos que no esten siendo utilizados por ninguna web. Esto se puede realizar utilizando el siguiente comando.
+
+```bash
+$a2dismod nombre_modulo
+$service apache2 restart
+```
