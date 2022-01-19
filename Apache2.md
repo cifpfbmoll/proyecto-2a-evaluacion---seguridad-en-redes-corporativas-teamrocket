@@ -70,7 +70,7 @@ $service apache2 restart
 
 ### Virtualhost
 
-#### Que es?
+**Que es?**
 
 Imágina que por cada web que hay en internet, hubiese un servidor dedicado a ella con una única web hospedada. No tiene sentido, verdad? Pues para evitar que eso fuese así apache aplica una serie de reglas en la configuración de los sitios que al detectar un "ServerName" específico, en el Header de la solicitud del cliente, te dirigen a una de las webs que hospeda o a otra basándose en el dominio.
 
@@ -113,13 +113,13 @@ Para generar un virtualhost lo único que debemos hacer es crear un archivo en "
 | ErrorLog | Ubicación del log únicamente de errores |
 | CustomLog | Ubicación del logs relacionado al funcionamiento de apache |
 
-#### Autenticación básica
+**Autenticación básica**
 
 Existen dos formas de realizar una autenticación, no excesivamente segura cabe destacar. Pero que para salir del paso funciona. Utilizando dos métodos: digest y basic. Funcionan de forma similar y la única diferencia es el comando utilizado para generar el fichero de autenticación y que el digest implementa grupos.
 
 Hoy en día se aconseja la Basic frente a la Digest ya que implementa un cifrado más robusto del pass. Antiguamente era al reves ya que basic guardaba el pass en texto plano.
 
-##### BasicAuth
+**BasicAuth**
 
 ```bash
 #Crear ficherox y definir usuario
@@ -152,7 +152,7 @@ $htpasswd ficherox user2
 | Order deny,allow | Deniega el acceso por defecto y habilita los que especifiquemos |
 | Allow from 127.0.0.1, 192.168.1.0/24 | Permite el login desde localhost y desde la red de mi casa, por ejemplo. |
 
-##### DigestAuth
+**DigestAuth**
 
 ```bash
 #Crear ficherox2 y definir usuario
@@ -181,7 +181,7 @@ Los únicos cambios respecto a Basic son:
 | AuthName | En digest debe coincidir con el nombre del grupo al que se asigna el usuario |
 | AuthType  | Tipo de acceso en este caso digest |
 
-#### Certificados SSL
+**Certificados SSL**
 
 ```xml
 ...
