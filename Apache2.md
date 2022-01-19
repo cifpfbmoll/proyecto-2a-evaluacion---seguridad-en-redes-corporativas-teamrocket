@@ -27,7 +27,7 @@ Toda la configuración es realizada desde la ruta /etc/apache2, al menos en Linu
 
 Normalmente la ruta por defecto de la web de apache2 es `/var/www/html`, normalmente trae un index.html con información acerca de apache2. El cual hemos editado y se ve de la siguiente forma.
 
-![imagen](/img/index-html.png)
+![imagen1](/img/index-html.png)
 
 ### Usuario y grupo específico
 
@@ -39,3 +39,9 @@ Este usuario es configurable desde el archivo `ennvars`
 export apache_run_user= www-data
 export apache_run_group= www-data
 ```
+
+### Ocultar información del servidor en el header
+
+Desde la ruta `/etc/apache2/conf-enabled/security.conf` podemos editar dos líneas de forma que ya no sea visible la versión del servidor web. 
+
+![imagen2](/img/header-update.png)
