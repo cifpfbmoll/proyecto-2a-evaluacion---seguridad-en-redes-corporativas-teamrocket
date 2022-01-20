@@ -125,7 +125,7 @@ Para generar un virtualhost lo único que debemos hacer es crear un archivo en "
 | ServerAlias | Los nombres, dominios, que contrasta el vhost a la hora de contestar una solicitud |
 | DocumentRoot | Ubicación de los archivos que componen la web del sitio |
 | Directory | Se utiliza para especificar configuraciones específicas dentro de los directorios especificados |
-| Options  | Define una serie de parametros relativos al comportamiento del sitio, para aplicar el contrario definir un "-*" |
+| [Options](https://docstore.mik.ua/orelly/linux/apache/ch03_11.htm)  | Define una serie de parametros relativos al comportamiento del sitio, para aplicar el contrario definir un "-*" |
 | Require | Define el acceso al recurso, en este caso a la web en sí, puede hacerse, por "ip|host" o de forma genérica. Se aplica en orden descendente. |
 | Redirect | Se utiliza para redirigirte a otra web |
 | ErrorDocument | Acompañado del código de estado define el texto o archivo con el que contesta una solicitud en caso de que ocurra ese código de estado. |
@@ -201,6 +201,8 @@ Los únicos cambios respecto a Basic son:
 | AuthType  | Tipo de acceso en este caso digest |
 
 **Certificados SSL**<a name="certs"></a>
+
+Podemos generar certificados con [certbot](https://certbot.eff.org/instructions?ws=apache&os=ubuntufocal) o bien con el comando `openssl req -x509 -newkey rsa:4096 -keyout algo.key -out algo.crt -sha256 -days 3650`, y moverlos a cualquier ruta "segura", en este ejemplo es `/etc/apache2/ssl` y por ultimo aplicar SSL desde el vhost.
 
 ```xml
 ...
