@@ -202,7 +202,12 @@ Los únicos cambios respecto a Basic son:
 
 **Certificados SSL**<a name="certs"></a>
 
-Podemos generar certificados con [certbot](https://certbot.eff.org/instructions?ws=apache&os=ubuntufocal) o bien con el comando `openssl req -x509 -newkey rsa:4096 -keyout algo.key -out algo.crt -sha256 -days 3650`, y moverlos a cualquier ruta "segura", en este ejemplo es `/etc/apache2/ssl` y por ultimo aplicar SSL desde el vhost.
+Podemos generar certificados con [certbot](https://certbot.eff.org/instructions?ws=apache&os=ubuntufocal) o bien con el comando `openssl req -x509 -newkey rsa:4096 -keyout algo.key -out algo.crt -sha256 -days 3650`, y moverlos a cualquier ruta "segura", en este ejemplo es `/etc/apache2/ssl`. Por último activar el modulo ssl y aplicar SSL desde el vhost.
+
+```bash
+$a2enmod ssl
+```
+
 
 ```xml
 ...
@@ -217,7 +222,7 @@ Una vez configurado ssl en un vhost por el puerto 443, podemos aplicar una redir
 <VirtualHost *:80> 
 
 	ServerName server.yuki.ej
-	Redirect / https://server.yuki.ej
+	Redirect permanent / https://server.yuki.ej
 	...
 </VirtualHost>
 
