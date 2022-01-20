@@ -77,7 +77,7 @@ $service apache2 restart
 
 **Que es?**
 
-Imágina que por cada web que hay en internet, hubiese un servidor dedicado a ella con una única web hospedada. No tiene sentido, verdad? Pues para evitar que eso fuese así apache aplica una serie de reglas en la configuración de los sitios que al detectar un "ServerName" específico, en el Header de la solicitud del cliente, te dirigen a una de las webs que hospeda o a otra basándose en el dominio.
+Imágina que por cada web que hay en internet, hubiese un servidor dedicado a ella con una única web hospedada. No tiene sentido, verdad? Pues para evitar que eso fuese así apache aplica una serie de reglas en la configuración de los sitios que al detectar un "ServerName" específico, en el Header de la solicitud del cliente, te dirigen a una de las webs que hospeda u otra basándose en ese nombre (por norma general un dominio).
 
 Para generar un virtualhost lo único que debemos hacer es crear un archivo en "/etc/apache2/sites-enabled" tal que:
 
@@ -194,3 +194,7 @@ Los únicos cambios respecto a Basic son:
 SSLCertificateFile "/etc/apache2/ssl/algo.crt"
 SSLCertificateKeyFile "/etc/apache2/ssl/algo.key"
 ```
+
+### .htacces
+
+El archivo htaccess (acceso de hipertexto) es un archivo oculto, ubicado en el directorio de cada site, que se utiliza para configurar funciones adicionales para sitios web alojados en el servidor web Apache. Con él, puedes reescribir la URL, proteger directorios con contraseña, habilitar la protección de enlaces directos, no permitir el acceso a direcciones IP específicas, cambiar la zona horaria de tu sitio web o alterar la página de índice predeterminada, y mucho más. Realmente puedes configurar casi lo mismo que con un VirtualHost pero sin tener que editar la configuración de apache2 directamente, esto posibilita otorgar acceso a un cliente y que él mismo defina la configuración de su sitio, por poner un ejemplo de su utilidad.
