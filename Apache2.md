@@ -258,3 +258,21 @@ El hotlinking es una forma de mostrar recursos de una web sin necesariamente pos
     RewriteRule \.(jpg|jpeg|png|gif)$ - [F]
     ```
 ## mod_security
+
+ModSecurity es un WAF (Web Application Firewall)
+
+### Instalación
+
+```bash
+$apt install libapache2-mod-security2
+$a2enmod security2
+$systemctl restart apache2
+```
+
+### Configuración
+
+Renombrar archivo a *.conf
+
+```bash
+$mv /etc/modsecurity/modsecurity.conf-recommended /etc/modsecurity/modsecurity.conf
+```
