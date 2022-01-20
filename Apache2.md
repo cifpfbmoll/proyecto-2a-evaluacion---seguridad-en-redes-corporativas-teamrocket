@@ -9,6 +9,8 @@
     3. [Ocultar información del servidor en el header](#noinfo)
     4. [Desactivar módulos no usados](#dismod)
     5. [VirtualHosts](#vhost)
+        1. [Autenticación](#auth)
+        1. [Certificados](#certs)
     5. [.htacces](#htacces)
 4. [Fourth Example](#fourth-examplehttpwwwfourthexamplecom)
 
@@ -130,7 +132,7 @@ Para generar un virtualhost lo único que debemos hacer es crear un archivo en "
 | ErrorLog | Ubicación del log únicamente de errores |
 | CustomLog | Ubicación del logs relacionado al funcionamiento de apache |
 
-**Autenticación básica**
+**Autenticación básica**<a name="auth"></a>
 
 Existen dos formas de realizar una autenticación, no excesivamente segura cabe destacar. Pero que para salir del paso funciona. Utilizando dos métodos: digest y basic. Funcionan de forma similar y la única diferencia es el comando utilizado para generar el fichero de autenticación y que el digest implementa grupos.
 
@@ -198,7 +200,7 @@ Los únicos cambios respecto a Basic son:
 | AuthName | En digest debe coincidir con el nombre del grupo al que se asigna el usuario |
 | AuthType  | Tipo de acceso en este caso digest |
 
-**Certificados SSL**
+**Certificados SSL**<a name="certs"></a>
 
 ```xml
 ...
