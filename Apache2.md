@@ -93,7 +93,7 @@ $service apache2 restart
 
 Imágina que por cada web que hay en internet, hubiese un servidor dedicado a ella con una única web hospedada. No tiene sentido, verdad? Pues para evitar que eso fuese así apache aplica una serie de reglas en la configuración de los sitios que al detectar un "ServerName" específico, en el Header de la solicitud del cliente, te dirigen a una de las webs que hospeda u otra basándose en ese nombre (por norma general un dominio).
 
-Para generar un virtualhost lo único que debemos hacer es crear un archivo en "/etc/apache2/sites-enabled" tal que:
+Para generar un virtualhost lo único que debemos hacer es crear un archivo en "/etc/apache2/sites-available" con la sintaxis descrita a continuación, luego aplicar la configuración con el comando `a2ensite nombre_del_vhost && service apache2 reload`:
 
 ```xml
 <VirtualHost *:80> 
