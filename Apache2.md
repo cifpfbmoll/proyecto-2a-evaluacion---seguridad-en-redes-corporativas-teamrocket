@@ -9,6 +9,7 @@
     3. [Ocultar información del servidor en el header](#noinfo)
     4. [Desactivar módulos no usados](#dismod)
     5. [VirtualHosts](#vhost)
+    5. [.htacces](#htacces)
 4. [Fourth Example](#fourth-examplehttpwwwfourthexamplecom)
 
 ## Introducción<a name="introducción"></a>
@@ -206,6 +207,6 @@ SSLCertificateFile "/etc/apache2/ssl/algo.crt"
 SSLCertificateKeyFile "/etc/apache2/ssl/algo.key"
 ```
 
-### .htacces
+### .htacces<a name="htacces"></a>
 
 El archivo htaccess (acceso de hipertexto) es un archivo oculto, ubicado en el directorio de cada site, que se utiliza para configurar funciones adicionales para sitios web alojados en el servidor web Apache. Con él, puedes reescribir la URL, proteger directorios con contraseña, habilitar la protección de enlaces directos, no permitir el acceso a direcciones IP específicas, cambiar la zona horaria de tu sitio web o alterar la página de índice predeterminada, y mucho más. Realmente puedes configurar casi lo mismo que con un VirtualHost pero sin tener que editar la configuración de apache2 directamente, esto posibilita otorgar acceso a un cliente y que él mismo defina la configuración de su sitio, por poner un ejemplo de su utilidad.
