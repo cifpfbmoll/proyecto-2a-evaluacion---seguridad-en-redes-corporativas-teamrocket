@@ -2,6 +2,8 @@
 
 ## Introducción
 
+Apache es un servidor web ampliamante conocido por su modularidad y respaldado por una organización enfocada en el software open-source nacido en 1995. Su competidor directo es Nginx el cual trabaja de forma más eficiente a la hora de gestionar grandes cantidades de solicitudes ya que es multi-hilo.
+
 ## Instalación
 
 Para proceder a la instalación de apache2 simplemente:
@@ -13,15 +15,18 @@ $sudo apt install apache2
 
 ## Configuración
 
-Toda la configuración es realizada desde la ruta /etc/apache2, al menos en Linux. Dentro encontraremos principalmente:
+Toda la configuración es realizada desde la ruta /etc/apache2. Dentro encontraremos principalmente:
 
 + Ficheros
     + apache2.conf -> Configuración general de apache
     + ennvars -> Variables de entorno
+    + ports.conf -> Llamado desde apache2.conf donde se definen los puertos de escucha por defecto
 + Directorios
-    + sites-enabled/available -> Ubicación de los sitios  (vhosts)
+    + sites-enabled/available -> Ubicación de los sitios (vhosts)
     + conf-enabled/available -> Ubicación de las configuraciones
     + mods-enabled/available -> Ubicación de los módulos
+
+![ficheros](/img/1.png)
 
 ### Por defecto
 
