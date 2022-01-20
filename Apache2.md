@@ -36,9 +36,9 @@ Normalmente la ruta por defecto de la web de apache2 es `/var/www/html`, normalm
 
 ### Usuario y grupo específico
 
-Por norma general apache define un usuario y grupo `www-data` específicos para que en caso de una filtración de credenciales de dicho usuario, este quede sujeto unicamente a aquello a lo que se le han otorgado permisos. Es decir, solo tendrá acceso a las webs y configuraciones del propio Apache.
+Por norma general apache define un usuario y grupo `www-data` específicos para que en caso de una filtración de credenciales de dicho usuario, este quede sujeto unicamente a aquello a lo que se le han otorgado permisos. Es decir, solo tendrá acceso a las webs y configuraciones del propio Apache. Por lo que cualquier contenido que deba ser visible por apache2 deberemos aplicarlo con un `sudo chown www-data:www-data /var/www/[new directory] && sudo chmod -R 775 /var/www/[new directory]` 
 
-Este usuario es configurable desde el archivo `ennvars`
+Este usuario es configurable desde el archivo `ennvars` editando las siguientes líneas:
 
 ```
 export apache_run_user= www-data
