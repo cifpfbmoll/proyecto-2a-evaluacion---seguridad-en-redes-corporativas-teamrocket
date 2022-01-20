@@ -13,6 +13,9 @@
         1. [Certificados](#certs)
     5. [.htacces](#htacces)
     6. [Hotlinking](#hot)
+4. [ModSecurity](#mod)
+    1. [Instalación](#modinstall)
+    2. [Configuración](#modconf)
 
 ## Introducción<a name="introducción"></a>
 
@@ -257,11 +260,11 @@ El hotlinking es una forma de mostrar recursos de una web sin necesariamente pos
     RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?facebook.com [NC]
     RewriteRule \.(jpg|jpeg|png|gif)$ - [F]
     ```
-## mod_security
+## mod_security<a name="mod"></a>
 
 ModSecurity es un WAF (Web Application Firewall), con el seremos capaces de detectar ataques diversos basandose en reglas que definamos.
 
-### Instalación
+### Instalación<a name="modinstall"></a>
 
 ```bash
 $apt install libapache2-mod-security2
@@ -269,7 +272,7 @@ $a2enmod security2
 $systemctl restart apache2
 ```
 
-### Configuración
+### Configuración<a name="modconf"></a>
 
 Renombrar archivo a *.conf
 
