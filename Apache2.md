@@ -2,15 +2,16 @@
 
 ### Indice
 1. [Introducción](#introducción)
-2. [Example2](#example2)
-3. [Third Example](#third-example)
+2. [Instalación](#instalación)
+3. [Configuración](#conf)
+    1. [Por defecto](#default)
 4. [Fourth Example](#fourth-examplehttpwwwfourthexamplecom)
 
 ## Introducción<a name="introducción"></a>
 
 Apache es un servidor web ampliamante conocido por su modularidad y respaldado por una organización enfocada en el software open-source nacido en 1995. Su competidor directo es Nginx el cual trabaja de forma más eficiente a la hora de gestionar grandes cantidades de solicitudes ya que es multi-hilo.
 
-## Instalación
+## Instalación<a name="instalación"></a>
 
 Para proceder a la instalación de apache2 simplemente:
 
@@ -19,7 +20,7 @@ $sudo apt update
 $sudo apt install apache2
 ```
 
-## Configuración
+## Configuración<a name="conf"></a>
 
 Toda la configuración es realizada desde la ruta /etc/apache2. Dentro encontraremos principalmente:
 
@@ -34,7 +35,7 @@ Toda la configuración es realizada desde la ruta /etc/apache2. Dentro encontrar
 
 ![ficheros](/img/1.png)
 
-### Por defecto
+### Por defecto<a name="default"></a>
 
 Normalmente la ruta por defecto de la web de apache2 es `/var/www/html`, normalmente trae un index.html con información acerca de apache2. El cual hemos editado y se ve de la siguiente forma.
 
