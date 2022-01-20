@@ -5,6 +5,10 @@
 2. [Instalación](#instalación)
 3. [Configuración](#conf)
     1. [Por defecto](#default)
+    2. [Usuario y grupo](#user)
+    3. [Ocultar información del servidor en el header](#noinfo)
+    4. [Desactivar módulos no usados](#dismod)
+    5. [VirtualHosts](#vhost)
 4. [Fourth Example](#fourth-examplehttpwwwfourthexamplecom)
 
 ## Introducción<a name="introducción"></a>
@@ -41,7 +45,7 @@ Normalmente la ruta por defecto de la web de apache2 es `/var/www/html`, normalm
 
 ![imagen1](/img/2.png)
 
-### Usuario y grupo específico
+### Usuario y grupo específico<a name="user"></a>
 
 Por norma general apache define un usuario y grupo `www-data` específicos para que en caso de una filtración de credenciales de dicho usuario, este quede sujeto unicamente a aquello a lo que se le han otorgado permisos. Es decir, solo tendrá acceso a las webs y configuraciones del propio Apache. Por lo que cualquier contenido que deba ser visible por apache2 deberemos aplicarlo con un `sudo chown www-data:www-data /var/www/[new directory] && sudo chmod -R 775 /var/www/[new directory]` 
 
@@ -52,7 +56,7 @@ export apache_run_user= www-data
 export apache_run_group= www-data
 ```
 
-### Ocultar información del servidor en el header
+### Ocultar información del servidor en el header<a name="noinfo"></a>
 
 Debido a que [la primera fase de cualquier ataque](https://www.incibe.es/protege-tu-empresa/blog/las-7-fases-ciberataque-las-conoces) se basa a grandes rasgos en el reconocimiento. Es necesario hacer lo más díficil posible que el atacante sea capaz de sacar información sobre la que pueda basar su ataque, como pueden ser la versiones del software.
 
@@ -65,7 +69,7 @@ ServerSignature Off
 
 ![imagen2](/img/3.png)
 
-### Desactivar módulos no usados
+### Desactivar módulos no usados<a name="dismod"></a>
 
 Como el principio de seguridad se basa en gran parte en reducir la superficie de ataque, deberíamos desactivar los módulos que no esten siendo utilizados por ninguna web. Esto se puede realizar utilizando el siguiente comando.
 
@@ -80,7 +84,7 @@ $a2dismod nombre_modulo
 $service apache2 restart
 ```
 
-### Virtualhost
+### Virtualhost<a name="vhost"></a>
 
 **Que es?**
 
