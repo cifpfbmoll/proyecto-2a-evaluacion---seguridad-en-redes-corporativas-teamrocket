@@ -32,7 +32,7 @@ Toda la configuración es realizada desde la ruta /etc/apache2. Dentro encontrar
 
 Normalmente la ruta por defecto de la web de apache2 es `/var/www/html`, normalmente trae un index.html con información acerca de apache2. El cual hemos editado y se ve de la siguiente forma.
 
-![imagen1](/img/index-html.png)
+![imagen1](/img/2.png)
 
 ### Usuario y grupo específico
 
@@ -56,7 +56,7 @@ ServerTokens Prod
 ServerSignature Off
 ```
 
-![imagen2](/img/header-update.png)
+![imagen2](/img/3.png)
 
 ### Desactivar módulos no usados
 
