@@ -47,7 +47,7 @@ export apache_run_group= www-data
 
 ### Ocultar información del servidor en el header
 
-Debido a que la primera fase de cualquier ataque se basa a grandes rasgos en el reconocimiento. Es necesario hacer lo más díficil posible que el atacante sea capaz de sacar información sobre la que pueda basar su ataque, como pueden ser la versiones del software.
+Debido a que [la primera fase de cualquier ataque](https://www.incibe.es/protege-tu-empresa/blog/las-7-fases-ciberataque-las-conoces) se basa a grandes rasgos en el reconocimiento. Es necesario hacer lo más díficil posible que el atacante sea capaz de sacar información sobre la que pueda basar su ataque, como pueden ser la versiones del software.
 
 Desde la ruta `/etc/apache2/conf-enabled/security.conf` podemos editar dos líneas de forma que ya no sea visible la versión del servidor web. Al menos no de forma directa desde un navegador convencional.
 
