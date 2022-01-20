@@ -12,7 +12,7 @@
         1. [Autenticación](#auth)
         1. [Certificados](#certs)
     5. [.htacces](#htacces)
-4. [Fourth Example](#fourth-examplehttpwwwfourthexamplecom)
+    6. [Hotlinking](#hot)
 
 ## Introducción<a name="introducción"></a>
 
@@ -231,3 +231,23 @@ Una vez configurado ssl en un vhost por el puerto 443, podemos aplicar una redir
 ### .htacces<a name="htacces"></a>
 
 El archivo htaccess (acceso de hipertexto) es un archivo oculto, ubicado en el directorio de cada site, que se utiliza para configurar funciones adicionales para sitios web alojados en el servidor web Apache. Con él, puedes reescribir la URL, proteger directorios con contraseña, habilitar la protección de enlaces directos, no permitir el acceso a direcciones IP específicas, cambiar la zona horaria de tu sitio web o alterar la página de índice predeterminada, y mucho más. Realmente puedes configurar casi lo mismo que con un VirtualHost pero sin tener que editar la configuración de apache2 directamente, esto posibilita otorgar acceso a un cliente y que él mismo defina la configuración de su sitio, por poner un ejemplo de su utilidad.
+
+### Hotlinking<a name="hot"></a>
+
+El hotlinking es una forma de mostrar recursos de una web sin necesariamente poseer ese recurso, esto seria un ejemplo: `<img src="https//:google.com/logo.png">`. Lo que ocurre con esta práctica es que consume una serie de recursos y no siempre nos interesará permitirlo. Una forma muy práctica de evitarlo es:
+
+1. Activar el modulo rewrite
+
+    ```bash
+    $a2enmod rewrite && service apache2 restart
+    ```
+
+2. Editar o el .htacces o el vhost y agregar los sitios que no queremos bloquear y por ultimo bloquear el hotlinking a todas las imagenes de nuestro sitio:
+
+    ```
+    RewriteCond %{HTTP_REFERER} !^$
+    RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?yourwebsite.com [NC]
+    RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?google.com [NC]
+    RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?facebook.com [NC]
+    RewriteRule \.(jpg|jpeg|png|gif)$ - [F]
+    ```
