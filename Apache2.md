@@ -257,3 +257,4 @@ El hotlinking es una forma de mostrar recursos de una web sin necesariamente pos
     RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?facebook.com [NC]
     RewriteRule \.(jpg|jpeg|png|gif)$ - [F]
     ```
+## mod_security
