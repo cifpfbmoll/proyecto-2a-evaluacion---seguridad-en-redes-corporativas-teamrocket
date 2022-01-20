@@ -259,7 +259,7 @@ El hotlinking es una forma de mostrar recursos de una web sin necesariamente pos
     ```
 ## mod_security
 
-ModSecurity es un WAF (Web Application Firewall)
+ModSecurity es un WAF (Web Application Firewall), con el seremos capaces de detectar ataques diversos basandose en reglas que definamos.
 
 ### Instalación
 
