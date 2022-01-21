@@ -320,6 +320,13 @@ IncludeOptional /etc/apache2/modsecurity-crs/coreruleset-3.3.0/crs-setup.conf
 IncludeOptional /etc/apache2/modsecurity-crs/coreruleset-3.3.0/rules/*.conf
 ```
 
+Comprobamos las ocnfiguraciones y reinciamos el servicio
+
+```bash
+$sudo apache2ctl -t
+$sudo service apache2 restart 
+```
+
 ### Pruebas a mod_security
 
 **[Slowloris](https://github.com/rapid7/metasploit-framework/blob/master/documentation/modules/auxiliary/dos/http/slowloris.md)**
