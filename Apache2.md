@@ -300,5 +300,7 @@ $sudo msfconsole
 >run #Ejecuta el ataque
 ```
 
+En las siguientes imágenes se puede apreciar como nada más empezar el ataque el servidor apache2 deja de responder la solicitud de mi navegador, en cuando se detiene el ataque el navegador vuelve a ser capaz de acceder a la web.
+
 ![ataque_slowloris](/img/5.png)
 ![ataque_slowloris2](/img/6.png)
