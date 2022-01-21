@@ -274,10 +274,21 @@ $systemctl restart apache2
 
 ### Configuración<a name="modconf"></a>
 
-Renombrar archivo a *.conf
+Renombrar archivo a *.conf, de esta forma el modulo será capaz de leer la configuración anteriormente desactivada. Reiniciamos apache2 después y en principio debería funcionar, aunque de forma rudimentaria.
 
 ```bash
 $mv /etc/modsecurity/modsecurity.conf-recommended /etc/modsecurity/modsecurity.conf
+$sudo service apache2 restart
+```
+
+Se supone que debemos acabar de configurar el waf editando la configuración que antes hemos renombrado. [Referencia](https://www.linuxbabe.com/security/modsecurity-apache-debian-ubuntu)
+
+```bash
+$sudo nano /etc/modsecurity/modsecurity.conf
+
+#Definir las siguientes directivas
+SecRuleEngine On #Bloquear ataques http
+SecAuditLogParts ABCEFHJKZ #Editar cnfiguración de logs
 ```
 
 ### Pruebas a mod_security
