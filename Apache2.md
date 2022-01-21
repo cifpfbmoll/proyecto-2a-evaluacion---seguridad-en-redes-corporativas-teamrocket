@@ -327,6 +327,11 @@ $sudo apache2ctl -t
 $sudo service apache2 restart 
 ```
 
+**Teoría**
+Desde el archivo de configuración que acabamos de editar de `crs-setup.conf` podemos definir un nivel de paranoia, esto se traduce en lo agresivo que se comporte el WAF. Y también decir que el modulo puede trabajar de dos formas `self-contained mode` o `anomaly scoring mode`, este último es el que viene por defecto con esta versión.
+
+Los logs serán depositados en el siguiente archivo `/var/log/apache2/modsec_audit.log`
+
 ### Pruebas a mod_security
 
 **[Slowloris](https://github.com/rapid7/metasploit-framework/blob/master/documentation/modules/auxiliary/dos/http/slowloris.md)**
