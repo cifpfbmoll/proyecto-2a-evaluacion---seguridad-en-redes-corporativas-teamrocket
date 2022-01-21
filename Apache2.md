@@ -301,6 +301,25 @@ $wget https://github.com/coreruleset/coreruleset/archive/v3.3.2.tar.gz
 $tar xvf v3.3.2.tar.gz
 ```
 
+Creamos un directorio para las reglas y las movemos ahí:
+
+```bash
+$sudo mkdir /etc/apache2/modsecurity-crs/
+$sudo mv coreruleset-3.3.2 /etc/apache2/modsevurity-crs
+```
+
+A continuación editar el archivo de configuración que se encuentra desactivado e incluimos en la configuración de modsecurity el paquete de reglas:
+
+```bash
+$cd /etc/apache2/modsecurity-crs/coreruleset-3.3.2/
+$sudo cp crs-setup.conf.example crs-setup.conf
+$sudo nano /etc/apache2/mods-enabled/security2.conf
+
+#Agregamos esto al documento de igual forma que lo hemos hecho antes
+IncludeOptional /etc/apache2/modsecurity-crs/coreruleset-3.3.0/crs-setup.conf
+IncludeOptional /etc/apache2/modsecurity-crs/coreruleset-3.3.0/rules/*.conf
+```
+
 ### Pruebas a mod_security
 
 **[Slowloris](https://github.com/rapid7/metasploit-framework/blob/master/documentation/modules/auxiliary/dos/http/slowloris.md)**
