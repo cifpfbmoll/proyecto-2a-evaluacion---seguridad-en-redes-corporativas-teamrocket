@@ -291,6 +291,16 @@ SecRuleEngine On #Bloquear ataques http
 SecAuditLogParts ABCEFHJKZ #Editar cnfiguración de logs
 ```
 
+### Instalar reglas OWASP(CRS)
+
+Descargar las reglas de Github y extraerlas:
+
+```bash
+#Las mas actualizadas cuando se hizo la guía eran las 3.3.2, revisar posibles actualizaciones
+$wget https://github.com/coreruleset/coreruleset/archive/v3.3.2.tar.gz
+$tar xvf v3.3.2.tar.gz
+```
+
 ### Pruebas a mod_security
 
 **[Slowloris](https://github.com/rapid7/metasploit-framework/blob/master/documentation/modules/auxiliary/dos/http/slowloris.md)**
