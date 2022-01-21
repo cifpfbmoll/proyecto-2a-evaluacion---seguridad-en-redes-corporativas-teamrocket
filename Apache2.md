@@ -16,6 +16,10 @@
 4. [ModSecurity](#mod)
     1. [Instalación](#modinstall)
     2. [Configuración](#modconf)
+    3. [Reglas OWASP](#owasp)
+        1. [Teoría OWASP](#towasp)
+    4. [Pentesting](#testmod)
+    
 
 ## Introducción<a name="introducción"></a>
 
@@ -291,7 +295,7 @@ SecRuleEngine On #Bloquear ataques http
 SecAuditLogParts ABCEFHJKZ #Editar cnfiguración de logs
 ```
 
-### Instalar reglas OWASP(CRS)
+### Instalar reglas OWASP(CRS)<a name="owasp"></a>
 
 Descargar las reglas de Github y extraerlas:
 
@@ -327,12 +331,12 @@ $sudo apache2ctl -t
 $sudo service apache2 restart 
 ```
 
-**Teoría**
+**Teoría**<a name="towasp"></a>
 Desde el archivo de configuración que acabamos de editar de `crs-setup.conf` podemos definir un nivel de paranoia, esto se traduce en lo agresivo que se comporte el WAF. Y también decir que el modulo puede trabajar de dos formas `self-contained mode` o `anomaly scoring mode`, este último es el que viene por defecto con esta versión.
 
 Los logs serán depositados en el siguiente archivo `/var/log/apache2/modsec_audit.log`
 
-### Pruebas a mod_security
+### Pruebas a mod_security<a name="testmod"></a>
 
 **[Slowloris](https://github.com/rapid7/metasploit-framework/blob/master/documentation/modules/auxiliary/dos/http/slowloris.md)**
 
