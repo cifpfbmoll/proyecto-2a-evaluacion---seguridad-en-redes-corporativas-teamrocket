@@ -361,3 +361,6 @@ En las siguientes imágenes se puede apreciar como nada más empezar el ataque e
 
 ![ataque_slowloris](/img/5.png)
 ![ataque_slowloris2](/img/6.png)
+
+Tras activar el WAF como se puede ver el ataque no surte efecto (por alguna razon es mentira)
+
