@@ -284,6 +284,12 @@ Renombrar archivo a *.conf, de esta forma el modulo será capaz de leer la confi
 $mv /etc/modsecurity/modsecurity.conf-recommended /etc/modsecurity/modsecurity.conf
 $sudo service apache2 restart
 ```
+Cargar el módulo en apache2.conf
+
+```bash
+#Agregar 
+LoadModule security2_module modules/mod_security2.so
+```
 
 Se supone que debemos acabar de configurar el waf editando la configuración que antes hemos renombrado. [Referencia](https://www.linuxbabe.com/security/modsecurity-apache-debian-ubuntu)
 
@@ -362,5 +368,5 @@ En las siguientes imágenes se puede apreciar como nada más empezar el ataque e
 ![ataque_slowloris](/img/5.png)
 ![ataque_slowloris2](/img/6.png)
 
-Tras activar el WAF como se puede ver el ataque no surte efecto (por alguna razon es mentira)
+Tras activar el WAF lamentablemente al volver a realizar el ataque con slowloris sigue siendo efectivo, por lo que tras un rato de búsqueda nos topamos con un módulo llamado `mod_evasive` el cual promete proteger nuestro servidor de ataques DOS, ya que como dicen en este issue de [SpiderLabs](https://github.com/SpiderLabs/owasp-modsecurity-crs/issues/1597) el módulo no es nada eficaz contra dos medianamente complejos ni distribuidos.
 
