@@ -330,7 +330,7 @@ IncludeOptional /etc/apache2/modsecurity-crs/coreruleset-3.3.0/crs-setup.conf
 IncludeOptional /etc/apache2/modsecurity-crs/coreruleset-3.3.0/rules/*.conf
 ```
 
-Comprobamos las ocnfiguraciones y reinciamos el servicio
+Comprobamos las configuraciones y reinciamos el servicio
 
 ```bash
 $sudo apache2ctl -t
@@ -342,6 +342,8 @@ $sudo service apache2 restart
 Desde el archivo de configuración que acabamos de editar de `crs-setup.conf` podemos definir un nivel de paranoia, esto se traduce en lo agresivo que se comporte el WAF. Y también decir que el modulo puede trabajar de dos formas `self-contained mode` o `anomaly scoring mode`, este último es el que viene por defecto con esta versión.
 
 Los logs serán depositados en el siguiente archivo `/var/log/apache2/modsec_audit.log`
+
+![remote shell](/img/7.png)
 
 ### Pruebas a mod_security<a name="testmod"></a>
 
@@ -368,5 +370,5 @@ En las siguientes imágenes se puede apreciar como nada más empezar el ataque e
 ![ataque_slowloris](/img/5.png)
 ![ataque_slowloris2](/img/6.png)
 
-Tras activar el WAF lamentablemente al volver a realizar el ataque con slowloris sigue siendo efectivo, por lo que tras un rato de búsqueda nos topamos con un módulo llamado `mod_evasive` el cual promete proteger nuestro servidor de ataques DOS, ya que como dicen en este issue de [SpiderLabs](https://github.com/SpiderLabs/owasp-modsecurity-crs/issues/1597) el módulo no es nada eficaz contra dos medianamente complejos ni distribuidos.
+Tras activar el WAF lamentablemente al volver a realizar el ataque con slowloris, con los parámetros anteriormente definidos, el ataque sigue siendo efectivo, por lo que tras un rato de búsqueda nos topamos con un módulo llamado `mod_evasive` el cual promete proteger nuestro servidor de ataques DOS, ya que como dicen en este issue de [SpiderLabs](https://github.com/SpiderLabs/owasp-modsecurity-crs/issues/1597) el módulo no es nada eficaz contra dos medianamente complejos ni distribuidos. 
 
