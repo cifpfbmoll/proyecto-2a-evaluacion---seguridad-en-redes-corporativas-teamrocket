@@ -25,6 +25,7 @@
 5. [ModAntiloris](#modev)
     1. [Instalación](#modlorisinstall)
     2. [Configuración](#modlorisconf)
+    3. [Demostración](#modloristest)
 
 ## Introducción<a name="introducción"></a>
 
@@ -458,3 +459,10 @@ LoadModule antiloris_module /usr/lib/apache2/modules/mod_antiloris.so
 ### [Configuración](https://github.com/Deltik/mod_antiloris#configuration)<a name="modlorisconf"></a> 
 
 Todos los parámetros y directivas perfectamente explicados en su repositorio
+
+### Demostración<a name="modloristest"></a> 
+
+Efectivamente corta de raíz el ataque de slowloris permitiendo tan solo el envió de 9 sockets:
+
+![cya slowloris](/img/9.png)
+![cya slowloris2](/img/10.png)
