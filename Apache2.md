@@ -388,6 +388,8 @@ Tras activar el WAF lamentablemente al volver a realizar el ataque con slowloris
 
 ## [mod_evasive](https://phoenixnap.com/kb/apache-mod-evasive)<a name="modev"></a>
 
+Este módulo es "genérico" y no aplacará un ataque DOS con slowloris pero encuentro que está bien que lo conozcamos por su polivalencia, ya que es capaz de detener la mayoría de ataques DOS.
+
 ### Instalación<a name="modevinstall"></a>
 
 Este módulo por defecto instalará un servidor de correo llamado postfix para enviar notificaciones a un correo, en el proceso de instalación hemos definido "No configuration", y hemos procedido con la instalación.
@@ -435,13 +437,20 @@ Este módulo es muy interesante ya que además de mitigar el ataque, en la parte
 
 ### Instalación<a name="modlorisinstall"></a>
 
+El proceso es algo más manual ya que no es tan facil como un `apt install` y un `a2enmod`, sino que debemos descargar el módulo y habilitarlo de forma manual.
+
 ```bash
+#Entramos en la ruta de los módulos
 $cd /usr/lib/apache2/modules/
+
+#Descargar módulo compilado
 $wget https://github.com/Deltik/mod_antiloris/releases/download/v0.7.0/mod_antiloris.so
-$echo "LoadModule antiloris_module modules/mod_antiloris.so" > /etc/apache2/mods-enabled/antiloris.load
+
+#Aplicamos la carga del módulo en un archivo .load
+$echo "LoadModule antiloris_module /usr/lib/apache2/modules/mod_antiloris.so" > /etc/apache2/mods-enabled/antiloris.load
 ```
 
-Directamente podemos establecer esta configuración en la carpeta mods-enabled `antiloris.conf`:
+O directamente podemos establecer esta configuración en la carpeta mods-enabled `antiloris.conf`:
 
 ```bash
 LoadModule reqtimeout_module modules/mod_reqtimeout.so
