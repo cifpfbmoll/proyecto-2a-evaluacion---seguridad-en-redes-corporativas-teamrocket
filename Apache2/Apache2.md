@@ -53,13 +53,13 @@ Toda la configuración es realizada desde la ruta /etc/apache2. Dentro encontrar
     + conf-enabled/available -> Ubicación de las configuraciones
     + mods-enabled/available -> Ubicación de los módulos
 
-![ficheros](/img/1.png)
+![ficheros](img/1.png)
 
 ### Por defecto<a name="default"></a>
 
 La ruta por defecto de la web de apache2 es `/var/www/html`, normalmente trae un index.html con información acerca de apache2. El cual hemos editado y se ve de la siguiente forma.
 
-![imagen1](/img/2.png)
+![imagen1](img/2.png)
 
 ### Usuario y grupo específico<a name="user"></a>
 
@@ -84,7 +84,7 @@ ServerTokens Prod
 ServerSignature Off
 ```
 
-![imagen2](/img/3.png)
+![imagen2](img/3.png)
 
 ### Desactivar módulos no usados<a name="dismod"></a>
 
@@ -246,7 +246,7 @@ Una vez configurado ssl en un vhost por el puerto 443, podemos aplicar una redir
 </VirtualHost>
 ```
 
-![ssl](/img/4.png)
+![ssl](img/4.png)
 
 ### .htacces<a name="htacces"></a>
 
@@ -354,11 +354,11 @@ Ahora habilitaremos la regla de prevención de DOS, también podemos modificarla
 $sudo nano /etc/apache2/modsecurity-crs/coreruleset-3.3.2/crs-setup.conf
 ```
 
-![enable dos protect](/img/8.png)
+![enable dos protect](img/8.png)
 
 Los logs serán depositados en el siguiente archivo `/var/log/apache2/modsec_audit.log`. En el siguiente ejemplo vemos como es capaz de detectar y bloquear un intento de ejecución remota de códgio bastante simple `http://127.0.0.1/index.html?exec=/bin/bash`:
 
-![remote shell](/img/7.png)
+![remote shell](img/7.png)
 
 ### Pruebas a mod_security<a name="testmod"></a>
 
@@ -382,8 +382,8 @@ $sudo msfconsole
 
 En las siguientes imágenes se puede apreciar como nada más empezar el ataque el servidor apache2 deja de responder la solicitud de mi navegador, en cuando se detiene el ataque el navegador vuelve a ser capaz de acceder a la web.
 
-![ataque_slowloris](/img/5.png)
-![ataque_slowloris2](/img/6.png)
+![ataque_slowloris](img/5.png)
+![ataque_slowloris2](img/6.png)
 
 Tras activar el WAF lamentablemente al volver a realizar el ataque con slowloris, con los parámetros anteriormente definidos, el ataque sigue siendo efectivo, por lo que tras un rato de búsqueda nos topamos con un módulo llamado `mod_evasive` el cual promete proteger nuestro servidor de ataques DOS y [`mod_antiloris`](https://github.com/Deltik/mod_antiloris), ya que como dicen en este issue de [SpiderLabs](https://github.com/SpiderLabs/owasp-modsecurity-crs/issues/1597) el módulo no es nada eficaz contra dos medianamente complejos ni distribuidos. En este otro [issue](https://github.com/SpiderLabs/ModSecurity/issues/1255) al parecer comentan que mod security ya no es eficaz ante slowloris por su incapacidad de registrar errores de estado 408.
 
@@ -474,5 +474,5 @@ Todos los parámetros y directivas perfectamente explicados en su repositorio
 
 Efectivamente corta de raíz el ataque de slowloris permitiendo tan solo el envió de 9 sockets:
 
-![cya slowloris](/img/9.png)
-![cya slowloris2](/img/10.png)
+![cya slowloris](img/9.png)
+![cya slowloris2](img/10.png)
