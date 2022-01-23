@@ -22,6 +22,9 @@
 5. [ModEvasive](#modev)
     1. [Instalación](#modevinstall)
     2. [Configuración](#modevconf)
+5. [ModAntiloris](#modev)
+    1. [Instalación](#modlorisinstall)
+    2. [Configuración](#modlorisconf)
 
 ## Introducción<a name="introducción"></a>
 
@@ -427,9 +430,9 @@ $service apache2 restart #Reiniciamos el servicio
 
 ## [mod_antiloris](https://github.com/Deltik/mod_antiloris)
 
-Este módulo es muy interesante ya que además de mitigar el ataque, en la parte final del Readme de su repositorio realizan una comprativa con otros módulos similares explicando las diferentes formas que tienen de detener el ataque de slowloris.
+Este módulo es muy interesante ya que además de mitigar el ataque, en la parte final del [Readme](https://github.com/Deltik/mod_antiloris#comparison-with-other-mitigation-strategies) de su repositorio realizan una comprativa con otros módulos similares explicando las diferentes formas que tienen de detener el ataque de slowloris.
 
-### Instalación 
+### Instalación<a name="modlorisinstall"></a>
 
 ```bash
 $cd /usr/lib/apache2/modules/
@@ -451,3 +454,7 @@ LoadModule antiloris_module /usr/lib/apache2/modules/mod_antiloris.so
     LocalIPs     127.0.0.1 ::1
 </IfModule>
 ```
+
+### [Configuración](https://github.com/Deltik/mod_antiloris#configuration)<a name="modlorisconf"></a> 
+
+Todos los parámetros y directivas perfectamente explicados en su repositorio
