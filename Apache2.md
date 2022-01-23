@@ -284,21 +284,21 @@ Renombrar archivo a *.conf, de esta forma el modulo será capaz de leer la confi
 $mv /etc/modsecurity/modsecurity.conf-recommended /etc/modsecurity/modsecurity.conf
 $sudo service apache2 restart
 ```
-Cargar el módulo en apache2.conf
+*Cargar el módulo en apache2.conf si no encontramos el archivo security2.load en la carpeta mods-enabled, que se encarga de cargar el módulo:*
 
 ```bash
 #Agregar 
 LoadModule security2_module modules/mod_security2.so
 ```
 
-Se supone que debemos acabar de configurar el waf editando la configuración que antes hemos renombrado. [Referencia](https://www.linuxbabe.com/security/modsecurity-apache-debian-ubuntu)
+Se supone que debemos acabar de configurar el waf editando la configuración que antes hemos renombrado en `/etc/modsecurity`. [Referencia](https://www.linuxbabe.com/security/modsecurity-apache-debian-ubuntu)
 
 ```bash
 $sudo nano /etc/modsecurity/modsecurity.conf
 
 #Definir las siguientes directivas
 SecRuleEngine On #Bloquear ataques http
-SecAuditLogParts ABCEFHJKZ #Editar cnfiguración de logs
+SecAuditLogParts ABCEFHJKZ #Editar configuración de logs
 ```
 
 ### Instalar reglas OWASP(CRS)<a name="owasp"></a>
@@ -311,14 +311,14 @@ $wget https://github.com/coreruleset/coreruleset/archive/v3.3.2.tar.gz
 $tar xvf v3.3.2.tar.gz
 ```
 
-Creamos un directorio para las reglas y las movemos ahí:
+Creamos un directorio para las reglas y las movemos ahí, también las podemos poner en otros lugares como `/etc/modsecurity/crs`:
 
 ```bash
 $sudo mkdir /etc/apache2/modsecurity-crs/
 $sudo mv coreruleset-3.3.2 /etc/apache2/modsevurity-crs
 ```
 
-A continuación editar el archivo de configuración que se encuentra desactivado e incluimos en la configuración de modsecurity el paquete de reglas:
+A continuación editar el archivo de configuración que se encuentra desactivado e incluimos en la configuración de modsecurity al paquete de reglas:
 
 ```bash
 $cd /etc/apache2/modsecurity-crs/coreruleset-3.3.2/
@@ -326,8 +326,8 @@ $sudo cp crs-setup.conf.example crs-setup.conf
 $sudo nano /etc/apache2/mods-enabled/security2.conf
 
 #Agregamos esto al documento de igual forma que lo hemos hecho antes
-IncludeOptional /etc/apache2/modsecurity-crs/coreruleset-3.3.0/crs-setup.conf
-IncludeOptional /etc/apache2/modsecurity-crs/coreruleset-3.3.0/rules/*.conf
+IncludeOptional /etc/apache2/modsecurity-crs/coreruleset-3.3.0/*.conf
+Include /etc/apache2/modsecurity-crs/coreruleset-3.3.0/rules/*.conf
 ```
 
 Comprobamos las configuraciones y reinciamos el servicio
@@ -339,7 +339,15 @@ $sudo service apache2 restart
 
 **Teoría**<a name="towasp"></a>
 
-Desde el archivo de configuración que acabamos de editar de `crs-setup.conf` podemos definir un nivel de paranoia, esto se traduce en lo agresivo que se comporte el WAF. Y también decir que el modulo puede trabajar de dos formas `self-contained mode` o `anomaly scoring mode`, este último es el que viene por defecto con esta versión.
+Desde el archivo de configuración que acabamos de editar de `crs-setup.conf` podemos definir un nivel de paranoia, esto se traduce en lo agresivo que se comporte el WAF. O simplemente activar o desactivar reglas. El archivo está bien dodcumentado. Y también decir que el modulo puede trabajar de dos formas `self-contained mode` o `anomaly scoring mode`, este último es el que viene por defecto con esta versión.
+
+Ahora habilitaremos la regla de prevención de DOS, también podemos modificarla:
+
+```bash
+$sudo nano /etc/apache2/modsecurity-crs/coreruleset-3.3.2/crs-setup.conf
+```
+
+![enable dos protect](/img/8.png)
 
 Los logs serán depositados en el siguiente archivo `/var/log/apache2/modsec_audit.log`. En el siguiente ejemplo vemos como es capaz de detectar y bloquear un intento de ejecución remota de códgio bastante simple `http://127.0.0.1/index.html?exec=/bin/bash`:
 
