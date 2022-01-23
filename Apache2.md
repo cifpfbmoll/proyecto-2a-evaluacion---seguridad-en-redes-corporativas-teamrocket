@@ -19,7 +19,9 @@
     3. [Reglas OWASP](#owasp)
         1. [Teoría OWASP](#towasp)
     4. [Pentesting](#testmod)
-    
+5. [ModEvasive](#modev)
+    1. [Instalación](#modevinstall)
+    2. [Configuración](#modevconf)
 
 ## Introducción<a name="introducción"></a>
 
@@ -379,4 +381,46 @@ En las siguientes imágenes se puede apreciar como nada más empezar el ataque e
 ![ataque_slowloris2](/img/6.png)
 
 Tras activar el WAF lamentablemente al volver a realizar el ataque con slowloris, con los parámetros anteriormente definidos, el ataque sigue siendo efectivo, por lo que tras un rato de búsqueda nos topamos con un módulo llamado `mod_evasive` el cual promete proteger nuestro servidor de ataques DOS, ya que como dicen en este issue de [SpiderLabs](https://github.com/SpiderLabs/owasp-modsecurity-crs/issues/1597) el módulo no es nada eficaz contra dos medianamente complejos ni distribuidos. 
+
+## mod_evasive<a name="modev"></a>
+
+Este módulo por defecto instalará un servidor de correo llamado postfix para enviar notificaciones a un correo, en el proceso de instalación hemos definido "No configuration", y hemos procedido con la instalación.
+
+### Instalación<a name="modevinstall"></a>
+
+Este módulo por defecto instalará un servidor de correo llamado postfix para enviar notificaciones a un correo, en el proceso de instalación hemos definido "No configuration", y hemos procedido con la instalación.
+
+```bash
+$apt-get update
+$apt-get install libapache2-mod-evasive
+
+#Deshabilitamos postfix si no nos interesa
+$systemctl disable postfix
+```
+
+### Configuración<a name="modevconf"></a>
+
+```bash
+$nano /etc/apache2/mods-enabled/evasive.conf
+
+#Agregamos
+DOSHashTableSize    10240
+DOSPageCount        10
+DOSSiteCount        50
+DOSPageInterval     1
+DOSSiteInterval     1
+DOSBlockingPeriod   60
+DOSLogDir           "/var/log/mod_evasive"
+DOSWhitelist File:/etc/apache2/whitelist #Podemos agregar una lista de excepciones con formato "DOSWhitelist 127.0.0.1"
+
+$chown www-data.www-data /etc/apache2/whitelist #Otorgamos la propiedad del archivo a apache2
+$service apache2 restart #Reiniciamos el servicio
+```
+
++ DOSHASHTABLESIZE especifica el tamaño de la tabla hash que almacena las direcciones IP.
++ DOSPAGECOUNT especifica el límite para el número de solicitudes para la misma página.
++ DOSSITECOUNT especifica el límite para el número total de solicitudes de cualquier objeto por el mismo cliente en el mismo sitio durante el intervalo configurado.
++ DOSPAGEINTERVAL especifica el intervalo para el umbral de recuento de páginas.
++ DOSSITEINTERVAL especifica el intervalo para el umbral de recuento de sitios.
++ DOSBLOCKINGPERIOD especifica el número de segundos que se bloqueará una IP.
 
