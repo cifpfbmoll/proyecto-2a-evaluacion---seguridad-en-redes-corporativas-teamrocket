@@ -396,6 +396,9 @@ $apt-get install libapache2-mod-evasive
 
 #Deshabilitamos postfix si no nos interesa
 $systemctl disable postfix
+
+#Nos aseguramos de que el modulo esta habilitado
+$a2enmod evasive
 ```
 
 ### Configuración<a name="modevconf"></a>
