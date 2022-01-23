@@ -57,7 +57,7 @@ Toda la configuración es realizada desde la ruta /etc/apache2. Dentro encontrar
 
 ### Por defecto<a name="default"></a>
 
-Normalmente la ruta por defecto de la web de apache2 es `/var/www/html`, normalmente trae un index.html con información acerca de apache2. El cual hemos editado y se ve de la siguiente forma.
+La ruta por defecto de la web de apache2 es `/var/www/html`, normalmente trae un index.html con información acerca de apache2. El cual hemos editado y se ve de la siguiente forma.
 
 ![imagen1](/img/2.png)
 
@@ -78,7 +78,8 @@ Debido a que [la primera fase de cualquier ataque](https://www.incibe.es/protege
 
 Desde la ruta `/etc/apache2/conf-enabled/security.conf` podemos editar dos líneas de forma que ya no sea visible la versión del servidor web. Al menos no de forma directa desde un navegador convencional.
 
-```
+```xml
+...
 ServerTokens Prod
 ServerSignature Off
 ```
@@ -87,7 +88,7 @@ ServerSignature Off
 
 ### Desactivar módulos no usados<a name="dismod"></a>
 
-Como el principio de seguridad se basa en gran parte en reducir la superficie de ataque, deberíamos desactivar los módulos que no esten siendo utilizados por ninguna web. Esto se puede realizar utilizando el siguiente comando.
+Como el principio de seguridad se basa en gran parte en reducir la superficie de ataque, deberíamos desactivar los módulos que no esten siendo utilizados por ninguna web. Esto se puede realizar utilizando los siguientes comando.
 
 ```bash
 #Mostrar modulos
@@ -104,7 +105,7 @@ $service apache2 restart
 
 **Que es?**
 
-Imágina que por cada web que hay en internet, hubiese un servidor dedicado a ella con una única web hospedada. No tiene sentido, verdad? Pues para evitar que eso fuese así apache aplica una serie de reglas en la configuración de los sitios que al detectar un "ServerName" específico, en el Header de la solicitud del cliente, te dirigen a una de las webs que hospeda u otra basándose en ese nombre (por norma general un dominio).
+Imágina que por cada web que hay en internet, hubiese un servidor dedicado a ella con una única web hospedada. No tiene sentido, verdad? Pues para evitar que eso fuese así apache aplica una serie de reglas en la configuración de los sitios que al detectar un "ServerName" específico, en el Header de la solicitud del cliente, te dirigen a una de las webs que hospeda u otra basándose en ese nombre (lo que es el dominio).
 
 Para generar un virtualhost lo único que debemos hacer es crear un archivo en "/etc/apache2/sites-available" con la sintaxis descrita a continuación, luego aplicar la configuración con el comando `a2ensite nombre_del_vhost && service apache2 reload`:
 
@@ -265,14 +266,14 @@ El hotlinking es una forma de mostrar recursos de una web sin necesariamente pos
 
     ```
     RewriteCond %{HTTP_REFERER} !^$
-    RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?yourwebsite.com [NC]
+    RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?rocket.es [NC]
     RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?google.com [NC]
     RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?facebook.com [NC]
     RewriteRule \.(jpg|jpeg|png|gif)$ - [F]
     ```
 ## mod_security<a name="mod"></a>
 
-ModSecurity es un WAF (Web Application Firewall), con el seremos capaces de detectar ataques diversos basandose en reglas que definamos.
+ModSecurity es un WAF (Web Application Firewall), con el seremos capaces de detectar ataques diversos basandose en reglas unas que definamos.
 
 ### Instalación<a name="modinstall"></a>
 
