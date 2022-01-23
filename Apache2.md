@@ -382,9 +382,7 @@ En las siguientes imágenes se puede apreciar como nada más empezar el ataque e
 
 Tras activar el WAF lamentablemente al volver a realizar el ataque con slowloris, con los parámetros anteriormente definidos, el ataque sigue siendo efectivo, por lo que tras un rato de búsqueda nos topamos con un módulo llamado `mod_evasive` el cual promete proteger nuestro servidor de ataques DOS, ya que como dicen en este issue de [SpiderLabs](https://github.com/SpiderLabs/owasp-modsecurity-crs/issues/1597) el módulo no es nada eficaz contra dos medianamente complejos ni distribuidos. 
 
-## mod_evasive<a name="modev"></a>
-
-Este módulo por defecto instalará un servidor de correo llamado postfix para enviar notificaciones a un correo, en el proceso de instalación hemos definido "No configuration", y hemos procedido con la instalación.
+## [mod_evasive](https://phoenixnap.com/kb/apache-mod-evasive)<a name="modev"></a>
 
 ### Instalación<a name="modevinstall"></a>
 
@@ -392,7 +390,7 @@ Este módulo por defecto instalará un servidor de correo llamado postfix para e
 
 ```bash
 $apt-get update
-$apt-get install libapache2-mod-evasive
+$apt-get install apache2-utils libapache2-mod-evasive
 
 #Deshabilitamos postfix si no nos interesa
 $systemctl disable postfix
