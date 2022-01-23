@@ -425,3 +425,29 @@ $service apache2 restart #Reiniciamos el servicio
 + DOSSITEINTERVAL especifica el intervalo para el umbral de recuento de sitios.
 + DOSBLOCKINGPERIOD especifica el número de segundos que se bloqueará una IP.
 
+## [mod_antiloris](https://github.com/Deltik/mod_antiloris)
+
+Este módulo es muy interesante ya que además de mitigar el ataque, en la parte final del Readme de su repositorio realizan una comprativa con otros módulos similares explicando las diferentes formas que tienen de detener el ataque de slowloris.
+
+### Instalación 
+
+```bash
+$cd /usr/lib/apache2/modules/
+$wget https://github.com/Deltik/mod_antiloris/releases/download/v0.7.0/mod_antiloris.so
+$echo "LoadModule antiloris_module modules/mod_antiloris.so" > /etc/apache2/mods-enabled/antiloris.load
+```
+
+Directamente podemos establecer esta configuración en la carpeta mods-enabled `antiloris.conf`:
+
+```bash
+LoadModule reqtimeout_module modules/mod_reqtimeout.so
+<IfModule mod_reqtimeout>
+    RequestReadTimeout header=20-40,MinRate=500 body=20-40,MinRate=500
+</IfModule>
+
+LoadModule antiloris_module /usr/lib/apache2/modules/mod_antiloris.so
+<IfModule antiloris_module>
+    IPTotalLimit 16
+    LocalIPs     127.0.0.1 ::1
+</IfModule>
+```
