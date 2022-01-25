@@ -10,7 +10,7 @@ Seguiremos el proceso de hardening de un servidor en una red corporativa usando 
     + [Configuraciones globales del servidor](Apache2/apache.md)
     + [Configuración de usuarios y grupos](Apache2/apache.md)
     + [Módulos y vulnerabilidades asociadas](Apache2/apache.md)
-    + [](Apache2/apache.md)
+    + [Ocultación de versiones](Apache2/apache.md)
     + [](Apache2/apache.md)
     + [](Apache2/apache.md)
 
