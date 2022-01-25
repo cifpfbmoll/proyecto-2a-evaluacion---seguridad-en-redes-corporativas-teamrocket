@@ -12,7 +12,7 @@ Podemos ver si el servicio está funcionando correctamente después de instalarl
 # service apache2 status
 ```
 El output debería ser similar a este:
-![Estado del servicio](Apache2/Imagenes/itworks!.png)
+![Estado del servicio](Imagenes/itworks!.png)
 
 Como se puede ver, es conveniente quitar el index.html original y modificarlo con un documento de prueba. El index.html por defecto, tanto de PHP como de Apache, conllevan información sensible que no puede ser vista por el público.
 
@@ -36,7 +36,7 @@ export APACHE_RUN_GROUP=www-data
 
 Verificamos el usuario propietario de los procesos con ``` ps aux | grep apache2```
 
-![Autoría de los procesos](Apache2/Imagenes/Exercici.png)
+![Autoría de los procesos](Imagenes/Exercici.png)
 
 ## Ocultación de versiones
 
