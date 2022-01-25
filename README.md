@@ -5,6 +5,14 @@ Seguiremos el proceso de hardening de un servidor en una red corporativa usando 
 
 
 # Índice del proyecto
-+ [Proceso de hárdening de un servidor web Apache](Apache2/Apache2.md)
++ [Proceso de hárdening de un servidor Ubuntu](Ubuntu/ubuntu.md)
++ [Proceso de hárdening de un servidor web Apache](Apache2/apache.md)
+    + [Configuraciones globales del servidor](Apache2/apache.md)
+    + [Configuración de usuarios y grupos](Apache2/apache.md)
+    + [Módulos y vulnerabilidades asociadas](Apache2/apache.md)
+    + [](Apache2/apache.md)
+    + [](Apache2/apache.md)
+    + [](Apache2/apache.md)
+
 + [Proceso de hárdening de un servidor SSH](ssh/ssh.md)
 + [Proceso de hárdening de un servidor VPN OpenVPN](OpenVPN/OpenVPN.md)
