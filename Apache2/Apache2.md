@@ -385,7 +385,7 @@ En las siguientes imágenes se puede apreciar como nada más empezar el ataque e
 ![ataque_slowloris](img/5.png)
 ![ataque_slowloris2](img/6.png)
 
-Tras activar el WAF lamentablemente al volver a realizar el ataque con slowloris, con los parámetros anteriormente definidos, el ataque sigue siendo efectivo, por lo que tras un rato de búsqueda nos topamos con un módulo llamado `mod_evasive` el cual promete proteger nuestro servidor de ataques DOS y [`mod_antiloris`](https://github.com/Deltik/mod_antiloris), ya que como dicen en este issue de [SpiderLabs](https://github.com/SpiderLabs/owasp-modsecurity-crs/issues/1597) el módulo no es nada eficaz contra dos medianamente complejos ni distribuidos. En este otro [issue](https://github.com/SpiderLabs/ModSecurity/issues/1255) al parecer comentan que mod security ya no es eficaz ante slowloris por su incapacidad de registrar errores de estado 408.
+Tras activar el WAF lamentablemente al volver a realizar el ataque con slowloris, con los parámetros anteriormente definidos, el ataque sigue siendo efectivo, por lo que tras un rato de búsqueda nos topamos con un módulo llamado `mod_evasive` el cual promete proteger nuestro servidor de ataques DOS y [`mod_antiloris`](https://github.com/Deltik/mod_antiloris), ya que como dicen en este issue de [SpiderLabs](https://github.com/SpiderLabs/owasp-modsecurity-crs/issues/1597) el módulo no es nada eficaz contra DOS medianamente complejos ni distribuidos. En este otro [issue](https://github.com/SpiderLabs/ModSecurity/issues/1255) al parecer comentan que mod security ya no es eficaz ante slowloris por su incapacidad de registrar errores de estado 408.
 
 ## [mod_evasive](https://phoenixnap.com/kb/apache-mod-evasive)<a name="modev"></a>
 
