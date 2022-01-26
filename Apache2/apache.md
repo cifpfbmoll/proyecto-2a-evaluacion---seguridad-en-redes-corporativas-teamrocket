@@ -49,7 +49,7 @@ ServerTokens Prod
 ServerSignature Off
 ```
 
-## Gestión de módulos
+## Gestión de módulosrx
 
 Apache permite instalar diferentes módulos para añadir funcionalidades a un site. Para la gestión de los mismos, tenemos tres comandos esenciales:
 
@@ -61,3 +61,7 @@ $ a2enmod nombre
 $ a2dismod nombre
 ```
 El primero, nos muestra los modulos instalados y disponibles de nuestra implementación de apache. Con a2enmod y a2dismod podemos activar y desactivar los módulos a medida que los necesitemos. Recomendamos encarecidamente desactivar todos los modulos no usados, ya que pueden tener agujeros de seguridad innecesarios.
+
+## Creación del Virtual Host
+
+## Directivas Options
