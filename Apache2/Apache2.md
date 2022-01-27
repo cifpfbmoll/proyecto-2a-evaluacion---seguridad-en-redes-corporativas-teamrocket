@@ -346,7 +346,7 @@ $sudo service apache2 restart
 
 **Teoría**<a name="towasp"></a>
 
-Desde el archivo de configuración que acabamos de editar de `crs-setup.conf` podemos definir un nivel de paranoia, esto se traduce en lo agresivo que se comporte el WAF. O simplemente activar o desactivar reglas. El archivo está bien dodcumentado. Y también decir que el modulo puede trabajar de dos formas `self-contained mode` o `anomaly scoring mode`, este último es el que viene por defecto con esta versión.
+Desde el archivo de configuración que acabamos de editar de `crs-setup.conf` podemos definir un nivel de paranoia, esto se traduce en lo agresivo que se comporte el WAF. O simplemente activar o desactivar reglas. El archivo está bien dodcumentado. Y también decir que el modulo puede trabajar de dos formas `self-contained mode` o `anomaly scoring mode`, este último es el que viene por defecto con esta versión. En caso de querer habilitar cualquier otro tipo de regla podemos buscar con `ctrl+w` cualquier cosa, por ejemplo, `sql` y descomentarlas. En la siguiente imagen se ve como se ha realizado este mismo proceso pero con DOS.
 
 Ahora habilitaremos la regla de prevención de DOS, también podemos modificarla:
 
