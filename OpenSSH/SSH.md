@@ -129,4 +129,22 @@ Su archivo de configuración está en `/etc/sudoers`, se puede acceder también 
 
 ## Pentesting
 
-En esta ocasión  
+En esta ocasión hemos deployeado una instancia de Nessus para llevar a cabo la fase de reconocimiento, este no nos ha proporcionado más que información básica acerca del sistema en sí. Y debido a que la imagen fue descargada en Agosto tiene instalado el servidor OpenSSH versión 8.4p1, el cual es supuestamente [vulnerable](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-28041). Según he leído tiene relación con un desbordamiento del buffer sin embargo no hay exploit publicado. 
+
++ [AtackeKB](https://attackerkb.com/topics/Le0EhqXEVb/cve-2021-28041/vuln-details)
++ [VulDB](https://vuldb.com/es/?id.170814)
+
+![nessus_info](img/1.png)
+![nessus_info2](img/2.png)
+
+Otra forma de intentar el ataque, sería con fuerza bruta, aunque no sé si el atacante en este caso podría ni si quiera listar el /etc/passwd para saber que usuarios hay en el sistema. Se los tendría que inventar. Pero suponiendo que se ha descubierto una nueva vulnerabilidad en apache la cual permite path traversal y consigue acceder al archivo. Simulamos el ataque. Primero con nmap y luego con hydra. *Spoiler*: ninguno de los dos funcionará debido a que nmap por defecto limita el tiempo de ataque a 15 minutos
+
+```bash
+$gzip -d rockyou.txt.gz
+
+$nmap IP_x -p 22 --script ssh-brute --script-args userdb=users.txt,passdb=/usr/share/wordlists/rockyou.txt
+$hydra -L users.txt -P /usr/share/wordlists/rockyou.txt ssh://IP_x -t 64 //Este -t número son los hilos
+```
+
+![brute](img/3.png)
+![nbrute2](img/4.png)
