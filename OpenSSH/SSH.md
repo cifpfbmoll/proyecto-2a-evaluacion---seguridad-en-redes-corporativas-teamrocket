@@ -137,14 +137,20 @@ En esta ocasión hemos deployeado una instancia de Nessus para llevar a cabo la 
 ![nessus_info](img/1.png)
 ![nessus_info2](img/2.png)
 
-Otra forma de intentar el ataque, sería con fuerza bruta, aunque no sé si el atacante en este caso podría ni si quiera listar el /etc/passwd para saber que usuarios hay en el sistema. Se los tendría que inventar. Pero suponiendo que se ha descubierto una nueva vulnerabilidad en apache la cual permite path traversal y consigue acceder al archivo. Simulamos el ataque. Primero con nmap y luego con hydra. *Spoiler*: ninguno de los dos funcionará debido a que nmap por defecto limita el tiempo de ataque a 15 minutos
+Otra forma de intentar el ataque, sería con fuerza bruta, aunque no sé si el atacante en este caso podría ni si quiera listar el /etc/passwd para saber que usuarios hay en el sistema. Se los tendría que inventar. Pero suponiendo que se ha descubierto una nueva vulnerabilidad en apache la cual permite path traversal y consigue acceder al archivo. Simulamos el ataque. Primero con nmap y luego con hydra. *Spoiler*: ninguno de los dos funcionará debido a que nmap por defecto limita el tiempo de ataque a 15 minutos, y con hydra y la tremenda lista de rockyou.txt a un ritmo tan lento tardariamos 140 días en recorrerla entera. Por último realizamos el ataque utilizando un script del framework metasploit conocido como `ssh_login` y tras 6 horas finalmente da con el password de una de las cuentas. No es ni de lejos la forma más limpia, pero es un recurso más para comprometer un sistema.
 
 ```bash
 $gzip -d rockyou.txt.gz
 
 $nmap IP_x -p 22 --script ssh-brute --script-args userdb=users.txt,passdb=/usr/share/wordlists/rockyou.txt
 $hydra -L users.txt -P /usr/share/wordlists/rockyou.txt ssh://IP_x -t 64 //Este -t número son los hilos
+$msfconsole
+>use auxiliary/scanner/ssh/ssh_login
+>set "options"
+>run
 ```
 
 ![brute](img/3.png)
 ![nbrute2](img/4.png)
+![nbrute3](img/5.png)
+![nbrute4](img/6.png)
