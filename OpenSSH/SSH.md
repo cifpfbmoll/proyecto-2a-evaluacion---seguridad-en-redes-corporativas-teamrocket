@@ -16,7 +16,7 @@ SSH es el acrónimo de secure shell. Este protocolo de administración de shell 
 $apt install openssh-server
 ```
 
-## Configuración<a name="conf"></a>
+## Configuración hardening SSH<a name="conf"></a>
 
 La mayor parte de la configuración de SSH queda plasmada en el archivo `/etc/ssh/sshd_config` la cúal debería tener únicamente permisos de lectura/escritura el usuario root:
 
@@ -127,9 +127,9 @@ Su archivo de configuración está en `/etc/sudoers`, se puede acceder también 
     #el user yuki y paco pueden borrar todo el so en el contexto root
     ```
 
-## Pentesting
+## Pentesting 1 sin Hardening
 
-En esta ocasión hemos deployeado una instancia de Nessus para llevar a cabo la fase de reconocimiento, este no nos ha proporcionado más que información básica acerca del sistema en sí. Y debido a que la imagen fue descargada en Agosto tiene instalado el servidor OpenSSH versión 8.4p1, el cual es supuestamente [vulnerable](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-28041). Según he leído tiene relación con un desbordamiento del buffer sin embargo no hay exploit publicado. 
+En esta ocasión hemos deployeado una instancia de Nessus para llevar a cabo la fase de reconocimiento, este no nos ha proporcionado más que información básica acerca del sistema en sí y la obviedad de que los certificados al ser autofirmados pueden ser suplantados. Y que debido a que la imagen fue descargada en Agosto tiene instalado el servidor OpenSSH versión 8.4p1, el cual es supuestamente [vulnerable](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-28041). Según he leído tiene relación con un desbordamiento del buffer sin embargo no hay exploit publicado. 
 
 + [AtackeKB](https://attackerkb.com/topics/Le0EhqXEVb/cve-2021-28041/vuln-details)
 + [VulDB](https://vuldb.com/es/?id.170814)
@@ -152,3 +152,42 @@ $msfconsole
 
 ![brute](img/3.png)
 
+## Pentesting 2 con hardening
+
+Una vez realizado el hardening procedemos a ejecutar la misma secuencia de reconocimiento, "explotación" de la vulnerabilidad y finalmente "ownear" el sistema. Tras lanzar el ataque e intentar iniciar una conexión desde un 3er sistema resulta que el servicio ssh no permite ninguna conexión debido a que estamos literalmente realizando un ataque de denegación de servicio. Por lo que para proteger realmente el sistema consideraría instalar un daemon conocido como `fail2ban` para bloquear las ip con intentos de conexión fallidos.
+
+![ddos](img/4.png)
+
+### Fail2ban
+
+Procedemos a la instalación y configuración:
+
+```bash
+$apt-get install -y fail2ban
+$systemctl start fail2ban
+$systemctl enable fail2ban
+
+#Editamos el archivo de configuración con el siguiente texto
+$nano /etc/fail2ban/jail.local
+```
+
+```yaml
+[sshd]
+enabled = true
+port = 22
+filter = sshd
+logpath = /var/log/auth.log
+maxretry = 3
+```
+
+Finalmente reiniciamos el servicio:
+
+```bash
+$systemctl restart fail2ban
+```
+
+**Desbanear una IP** `$fail2ban-client set sshd unbanip IP_ADDRESS`
+
+Ahora nada más comenzar el ataque bloqueará por IP los intentos de autenticación que provocan el DDOS y nos dejará acceder normalmente al terminal remoto.
+
+![noddos](img/5.png)
