@@ -151,6 +151,4 @@ $msfconsole
 ```
 
 ![brute](img/3.png)
-![nbrute2](img/4.png)
-![nbrute3](img/5.png)
-![nbrute4](img/6.png)
+
