@@ -7,6 +7,7 @@
     1. [Por defecto](#sudo)
 4. [Pentesting con configuración por defecto](#pen1)
 5. [Pentesting con "hardening"](#pen2) 
+   1. [Fail2ban](#f)
 
 ## Introducción<a name="introducción"></a>
 
