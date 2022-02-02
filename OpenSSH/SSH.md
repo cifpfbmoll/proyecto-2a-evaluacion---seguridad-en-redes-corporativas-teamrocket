@@ -5,6 +5,8 @@
 2. [Instalación](#instalación)
 3. [Configuración](#conf)
     1. [Por defecto](#sudo)
+4. [Pentesting con configuración por defecto](#pen1)
+5. [Pentesting con "hardening"](#pen2) 
 
 ## Introducción<a name="introducción"></a>
 
@@ -127,7 +129,7 @@ Su archivo de configuración está en `/etc/sudoers`, se puede acceder también 
     #el user yuki y paco pueden borrar todo el so en el contexto root
     ```
 
-## Pentesting 1 sin Hardening
+## Pentesting 1 sin Hardening<a name="pen1"></a>
 
 En esta ocasión hemos deployeado una instancia de Nessus para llevar a cabo la fase de reconocimiento, este no nos ha proporcionado más que información básica acerca del sistema en sí y la obviedad de que los certificados al ser autofirmados pueden ser suplantados. Y que debido a que la imagen fue descargada en Agosto tiene instalado el servidor OpenSSH versión 8.4p1, el cual es supuestamente [vulnerable](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-28041). Según he leído tiene relación con un desbordamiento del buffer sin embargo no hay exploit publicado. 
 
@@ -152,13 +154,13 @@ $msfconsole
 
 ![brute](img/3.png)
 
-## Pentesting 2 con hardening
+## Pentesting 2 con hardening<a name="pen2"></a>
 
 Una vez realizado el hardening procedemos a ejecutar la misma secuencia de reconocimiento, "explotación" de la vulnerabilidad y finalmente "ownear" el sistema. Tras lanzar el ataque e intentar iniciar una conexión desde un 3er sistema resulta que el servicio ssh no permite ninguna conexión debido a que estamos literalmente realizando un ataque de denegación de servicio. Por lo que para proteger realmente el sistema consideraría instalar un daemon conocido como `fail2ban` para bloquear las ip con intentos de conexión fallidos.
 
 ![ddos](img/4.png)
 
-### Fail2ban
+### Fail2ban<a name="f"></a>
 
 Procedemos a la instalación y configuración:
 
@@ -188,6 +190,10 @@ $systemctl restart fail2ban
 
 **Desbanear una IP** `$fail2ban-client set sshd unbanip IP_ADDRESS`
 
-Ahora nada más comenzar el ataque bloqueará por IP los intentos de autenticación que provocan el DDOS y nos dejará acceder normalmente al terminal remoto.
+Ahora nada más comenzar el ataque bloqueará por IP los intentos de autenticación que provocan el DDOS y nos dejará acceder normalmente al terminal remoto. Como se ve en la captura a continuación:
 
 ![noddos](img/5.png)
+
+Tras un reescaneo del servidor con Nessus, no detectamos ninguna diferencia entre el anterior escaneo y este.
+
+![renessus](img/6.png)
