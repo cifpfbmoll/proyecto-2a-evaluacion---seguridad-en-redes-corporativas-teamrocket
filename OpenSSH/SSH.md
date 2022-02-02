@@ -134,7 +134,7 @@ Su archivo de configuración está en `/etc/sudoers`, se puede acceder también 
 
 En esta ocasión hemos deployeado una instancia de Nessus para llevar a cabo la fase de reconocimiento, este no nos ha proporcionado más que información básica acerca del sistema en sí y la obviedad de que los certificados al ser autofirmados pueden ser suplantados. Y que debido a que la imagen fue descargada en Agosto tiene instalado el servidor OpenSSH versión 8.4p1, el cual es supuestamente [vulnerable](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-28041). Según he leído tiene relación con un desbordamiento del buffer sin embargo no hay exploit publicado. 
 
-+ [AtackeKB](https://attackerkb.com/topics/Le0EhqXEVb/cve-2021-28041/vuln-details)
++ [AtackerKB](https://attackerkb.com/topics/Le0EhqXEVb/cve-2021-28041/vuln-details)
 + [VulDB](https://vuldb.com/es/?id.170814)
 
 ![nessus_info](img/1.png)
