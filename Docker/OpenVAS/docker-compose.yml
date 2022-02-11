@@ -1,0 +1,51 @@
+#https://conpilar.es/como-instalar-gvm-vulnerability-scanner-en-ubuntu-20-04/
+version: '3.4'
+
+services:
+  #Servicio para mantener actualizados los contenedores
+  watchtower:
+    container_name: watchtower
+    hostname: watchtower
+    restart: always
+    image: containrrr/watchtower
+    env_file:
+      - ./config/local.env
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --schedule "0 0 4 * * *" --cleanup
+    
+  #Servicio para gestionar el daemon de docker desde una interfaz gráfica
+  portainer:
+    image: portainer/portainer-ce
+    hostname: portainer
+    container_name: portainer
+    restart: always
+    command: -H unix:///var/run/docker.sock
+    ports:
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer:/data
+      
+  #OpenVAS
+  gvm:
+    image: isaudits/gvm:gvm-21.4
+    hostname: gvm
+    container_name: gvm
+    ports:
+      - "8090:9392"
+    env_file:
+      - ./config/local.env
+    volumes:
+      - ./config:/config
+      - gvm_data:/usr/local/var/lib
+      - gvm_db:/var/lib/postgresql/data
+    tty: true
+
+volumes:
+  portainer:
+    name: portainer
+  gvm_data:
+    name: gvm_data
+  gvm_db:
+    name: gvm_db

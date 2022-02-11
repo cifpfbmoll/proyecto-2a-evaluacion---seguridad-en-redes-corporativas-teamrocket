@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  nessus:
+    image: tenableofficial/nessus
+    restart: always
+    environment:
+      USERNAME: admin	
+      PASSWORD: admin
+      ACTIVATION_CODE: <Tu clave de nessus>
+    ports:
+      - 8080:8834
