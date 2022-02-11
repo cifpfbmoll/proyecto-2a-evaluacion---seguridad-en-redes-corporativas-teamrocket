@@ -1,0 +1,1 @@
+[Referencia](https://conpilar.es/como-instalar-gvm-vulnerability-scanner-en-ubuntu-20-04/)
