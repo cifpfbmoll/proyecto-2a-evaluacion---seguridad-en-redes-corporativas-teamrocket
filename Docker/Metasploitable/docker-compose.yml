@@ -1,0 +1,5 @@
+version: '3.1'
+services:
+  metasploitable:
+    image: tleemcjr/metasploitable2
+    restart: always
