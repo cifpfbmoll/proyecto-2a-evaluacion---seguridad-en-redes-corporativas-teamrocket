@@ -5,5 +5,7 @@ En este repositorio se documentará el proceso de hardening de un servidor Linux
 + [Apache2](Apache2/Apache2.md)
 + [OpenSSh](OpenSSH/SSH.md)
 
-+ Instalación de OpenVPN con docker: https://user-images.githubusercontent.com/34201397/153484447-752773fd-3cc7-4a4b-b13e-cd30fcb566c9.mp4
+## Links de interés
+
++ [Tutorial de Instalación de OpenVPN con docker](https://user-images.githubusercontent.com/34201397/153484447-752773fd-3cc7-4a4b-b13e-cd30fcb566c9.mp4)
 
