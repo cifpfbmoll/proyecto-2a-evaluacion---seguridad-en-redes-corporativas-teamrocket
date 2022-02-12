@@ -9,7 +9,8 @@ Así que procederemos a la deteccción y explotación de vulnerabilidades direct
 
 Los resultados son catastróficos como era de esperar, se detectan con nessus un total de 65 vulnerabilidades. Uno de ellos es el password de VNC, "password", es decir demasiado fácil. Sin embargo explotarlos a través de docker puede ser un poco complicado, lo suyo sería tener la máquina virtual a la que hace referencia esta [guía de explotación](https://docs.rapid7.com/metasploit/metasploitable-2-exploitability-guide/), [enlace a la MV](https://sourceforge.net/projects/metasploitable/).
 
-Podemos adueñarnos del sistema de practicamente de cualquier forma, desde usuarios privilegiados de las bases de datos hasta con formularios web php.
+Podemos adueñarnos del sistema de practicamente cualquier forma, desde usuarios privilegiados de las bases de datos hasta con formularios web php.
+
 A continuación realizaremos una pequeña demostración de la toma de esta máquina a través de un servicio IRC expuesto.
 
 ## Reconocimiento
