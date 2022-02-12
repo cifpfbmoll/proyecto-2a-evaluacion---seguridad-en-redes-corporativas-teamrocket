@@ -4,6 +4,9 @@ En este repositorio se documentará el proceso de hardening de un servidor Linux
 
 + [Apache2](Apache2/Apache2.md)
 + [OpenSSh](OpenSSH/SSH.md)
++ [Escaneo de vulnerabilidades](Escaneo de vulnerabilidades/Escaneo de vulnerabilidades.md)
++ [Concienciación](Concienciación en ciberseguridad/Concienciación en ciberseguridad.md)
+
 
 ## Links de interés
 
