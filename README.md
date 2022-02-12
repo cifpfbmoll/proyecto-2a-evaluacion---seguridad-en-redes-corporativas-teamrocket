@@ -4,7 +4,7 @@ En este repositorio se documentará el proceso de hardening de un servidor Linux
 
 + [Apache2](Apache2/Apache2.md)
 + [OpenSSH](OpenSSH/SSH.md)
-+ [Escaneo de vulnerabilidades](Escaneo de vulnerabilidades/Escaneo de vulnerabilidades.md)
++ [Escaneo de vulnerabilidades](https://github.com/cifpfbmoll/proyecto-2a-evaluacion---seguridad-en-redes-corporativas-teamrocket/blob/main/Escaneo%20de%20vulnerabilidades/Escaneo%20de%20vulnerabilidades.md)
 + [Concienciación](Concienciación en ciberseguridad/Concienciación en ciberseguridad.md)
 
 
