@@ -11,7 +11,7 @@ El primer paso es la innstalación, es muy recomendable instalar este tipo de se
 ```bash
 $sudo apt install snort
 ```
-[Tutorial](https://linoxide.com/install-snort-on-ubuntu/)
+[Tutorial Snort3](https://linoxide.com/install-snort-on-ubuntu/)
 
 ## Configuración
 
