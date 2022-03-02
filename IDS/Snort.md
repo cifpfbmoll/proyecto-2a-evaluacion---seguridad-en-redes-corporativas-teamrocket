@@ -11,6 +11,7 @@ El primer paso es la innstalación, es muy recomendable instalar este tipo de se
 ```bash
 $sudo apt install snort
 ```
+
 [Tutorial Snort3](https://linoxide.com/install-snort-on-ubuntu/)
 
 ## Configuración
@@ -30,7 +31,7 @@ La mayoría de configuración esta definida en `/etc/snort/snort.con` mientras q
 
 **Reglas**
 
-A la hora de definir reglas debemos entender como funciona su sintaxis, lo primero que debemos saber este estas contienen un identificador de regla, comenzando en el numero "1000000". Y estas siguen la estructura de: Acción | Protocolo | IP Origen | Puerto Origen |Dirección | IP Destino | Puerto Destino + Regla opcional + Parámetros de regla opcional. 
+A la hora de definir reglas debemos entender como funciona su sintaxis, lo primero que debemos saber este estas contienen un identificador de regla, comenzando en el numero "1000000". Y estas siguen la estructura de: Acción | Protocolo | IP Origen | Puerto Origen |Dirección | IP Destino | Puerto Destino + Regla opcional + Parámetros de regla opcional.
 
 + Acción:
     + alert
