@@ -69,7 +69,7 @@ Hemos creado un archivo llamado `ssh-custom.rules` en la ruta `/etc/snort/rules`
 
 ```
 alert tcp any any -> any 22 (msg:"Possible SSH brute forcing!"; flags:S+; treshold: type both, track by_src, count 2, seconds 30; sid: 100000040; rev:1;)
-``
+```
 
 Esta cadena lo que hace es que al detectar 2 intentos de inicio de sesión fallidos en un servicio SSH en menos de 30 segundos provinientes desde el mismo origen da una alerta por pantalla.
 
