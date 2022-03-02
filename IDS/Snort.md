@@ -74,3 +74,8 @@ alert tcp any any -> any 22 (msg:"Possible SSH brute forcing!"; flags:S+; tresho
 Esta cadena lo que hace es que al detectar 2 intentos de inicio de sesión fallidos en un servicio SSH en menos de 30 segundos provinientes desde el mismo origen da una alerta por pantalla.
 
 ![detect](img/2.png)
+
+En caso de querer que rechace los paquetes provenientes del origen atacante reemplazamos el "alert" por un "reject" y se apreciará lo siguiente, que solo aparece una única alerta porque el resto de paquetes están siendo rechazados:
+
+![reject](img/3.png)
+
