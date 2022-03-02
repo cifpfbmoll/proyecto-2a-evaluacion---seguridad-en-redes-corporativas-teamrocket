@@ -62,3 +62,11 @@ alert tcp 10.0.0.0/24 any -> any any (msg: "Algo ha hecho saltar alerta"; conten
 ## Demostración
 
 Anteriormente demostramos que era posible el ataque por fuerza bruta a SSH, así que vamos a desactivar el fail2ban y vamos a realizar el ejercicio de forma que será snort quien registre y deniegue los paquetes.
+
+Hemos creado un archivo llamado `ssh-custom.rules` en la ruta `/etc/snort/rules` y agregado este archivo a la configruación de snort mediante un `Include $RULE_PATH/ssh-custom.rules`. Con la siguiente cadena en su interior: 
+
+```
+alert tcp any any -> any 22 (msg:"Possible SSH brute forcing!"; flags:S+; treshold: type both, track by_src, count 2, seconds 30; sid: 100000040; rev:1;)
+``
+
+Esta cadena lo que hace es que al detectar 2 intentos de inicio de sesión fallidos en un servicio SSH en menos de 30 segundos provinientes desde el mismo origen da una alerta por pantalla.
