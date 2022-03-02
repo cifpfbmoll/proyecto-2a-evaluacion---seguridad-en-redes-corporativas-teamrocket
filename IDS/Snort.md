@@ -75,7 +75,10 @@ Esta cadena lo que hace es que al detectar 2 intentos de inicio de sesión falli
 
 ![detect](img/2.png)
 
-En caso de querer que rechace los paquetes provenientes del origen atacante reemplazamos el "alert" por un "reject" y se apreciará lo siguiente, que solo aparece una única alerta porque el resto de paquetes están siendo rechazados:
+En caso de querer que rechace los paquetes provenientes del origen atacante reemplazamos el "alert" por un "reject" o "drop" y cambiamos el daq utilizado con el parametro "--daq", que solo aparece una única alerta porque el resto de paquetes están siendo rechazados:
+
+```bash
+$snort -daq afpacket -i enp0s3 -c /etc/snort/snort.conf -A console
+```
 
 ![reject](img/3.png)
-
