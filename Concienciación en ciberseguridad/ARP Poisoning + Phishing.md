@@ -21,4 +21,4 @@ Suponiendo que una vez realizado el MITM somos capaces de interceptar y modifica
 ![5](img/5.png)
 ![6](img/6.png)
 
-*Para la realización de este apartado a sido necesario un portatil con Kali instalado en el disco ya que desde el modo bridge de VirtualBox no ha sido posible la utilización de ettercap, otra forma de realizar el ataque con una máquina virtual hubiese sido con un [dongle wifi](https://www.youtube.com/watch?v=5MOsY3VNLK8)*
+*Para la realización de este apartado ha sido necesario un portatil con Kali instalado en el disco ya que desde el modo bridge de VirtualBox no ha sido posible la utilización de ettercap, otra forma de realizar el ataque con una máquina virtual hubiese sido con un [dongle wifi](https://www.youtube.com/watch?v=5MOsY3VNLK8)*

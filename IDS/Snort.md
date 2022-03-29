@@ -4,7 +4,7 @@ Esta herramienta nos ayudará a detectar tráfico sospechoso en nuestra red si l
 
 ## Instalación
 
-El primer paso es la innstalación, es muy recomendable instalar este tipo de servicios directamente en el host ya que docker aplica un overhead a los paquetes que acabará recibiendo nuestro IDS y no nos interesa, ya que implicará menos eficiencia y más falsos positivos muy posiblemente. Además la guía del Incibe utiliza este método.
+El primer paso es la instalación, es muy recomendable instalar este tipo de servicios directamente en el host ya que docker aplica un overhead a los paquetes que acabará recibiendo nuestro IDS y no nos interesa, ya que implicará menos eficiencia y más falsos positivos muy posiblemente. Además la guía del Incibe utiliza este método.
 
 *Se llegó a esta conclusión tras varios intentos de configuración con un software similar llamado "Suricata" y con el firewall "Pfsense" en el pasado*
 
