@@ -1,0 +1,10 @@
+version: '2'
+services:
+  tomcat1:
+    build: tomcat1/.
+    ports:
+      - "9091:9091"
+  tomcat2:
+    build: tomcat2/.
+    ports:
+      - "9090:9090"

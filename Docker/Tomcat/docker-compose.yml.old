@@ -1,0 +1,20 @@
+version: '2'
+services:
+  tomcat1:
+    build: tomcat1/.
+    ports:
+      - "9091:9091"
+  tomcat2:
+    build: tomcat2/.
+    ports:
+      - "9091:9091"
+  httpd:
+    volumes:
+      - ./logs:/var/log/apache2
+    ports:
+      - "${HOST_HTTP_PORT}:80"
+      - "${HOST_HTTPS_PORT}:443"
+    build: httpd/.
+    links:
+      - tomcat1:host.tomcat1
+      - tomcat2:host.tomcat2
