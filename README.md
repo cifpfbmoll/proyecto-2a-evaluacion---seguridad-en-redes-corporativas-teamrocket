@@ -7,6 +7,7 @@ En este repositorio se documentará el proceso de hardening de un servidor Linux
 + [Escaneo de vulnerabilidades](https://github.com/cifpfbmoll/proyecto-2a-evaluacion---seguridad-en-redes-corporativas-teamrocket/blob/main/Escaneo%20de%20vulnerabilidades/Escaneo%20de%20vulnerabilidades.md)
 + [Concienciación](https://github.com/cifpfbmoll/proyecto-2a-evaluacion---seguridad-en-redes-corporativas-teamrocket/blob/main/Concienciaci%C3%B3n%20en%20ciberseguridad/Concienciaci%C3%B3n%20en%20ciberseguridad.md)
 + [Pentesting WIFI](https://github.com/cifpfbmoll/proyecto-2a-evaluacion---seguridad-en-redes-corporativas-teamrocket/blob/main/Pentesting%20wifi/Demostraci%C3%B3n.md)
++ [IDS](https://github.com/cifpfbmoll/proyecto-2a-evaluacion---seguridad-en-redes-corporativas-teamrocket/blob/main/IDS/Snort.md)
 
 ## Links de interés
 
