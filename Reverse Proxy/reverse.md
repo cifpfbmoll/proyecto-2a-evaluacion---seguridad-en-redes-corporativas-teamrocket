@@ -14,3 +14,17 @@ Podemos comprobar que el proxypass funciona accediendo a la web.
 
 ![img](img/redirect.png)
 
+El reverse proxy que nos permite ir a ambas aplicaciones quedaría así:
+
+```bash
+<Location /counter >
+    ProxyPass ajp://localhost:9091/counter
+</Location>
+
+<Location /helloworld>
+    ProxyPass ajp://localhost:9090/helloworld
+</Location>	
+```	
+
+![img](img/webappcounter.png)
+![img](img/webapphello.png)
